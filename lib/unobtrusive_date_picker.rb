@@ -145,6 +145,11 @@ module UnobtrusiveDatePicker
         end
       end
 
+      if options[:start_date]
+        date_string = "#{options[:start_date].year}-#{two_digits_number(options[:start_date].month)}-#{two_digits_number(options[:start_date].day)}"
+        html_classes << "start-date-#{date_string}"
+      end
+
       if options[:no_transparency]
         html_classes << 'no-transparency'
       end
@@ -201,6 +206,10 @@ module UnobtrusiveDatePicker
       else
         nil
       end
+    end
+
+    def two_digits_number(number)
+      number < 10 ? "0#{number}" : number
     end
   end
   

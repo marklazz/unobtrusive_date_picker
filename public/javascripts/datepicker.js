@@ -1048,8 +1048,7 @@ function datePicker(options) {
                                                 if(o.dateSet != null && o.dateSet.getDate() == dt && o.dateSet.getMonth() == tdm && o.dateSet.getFullYear() == tdy) {
                                                         cName.push("date-picker-selected-date");
                                                 };
-                                                
-                                                if(o.disableDays[weekDay] || stub + String(dt < 10 ? "0" + dt : dt) in disabledDates) {
+                                                if(o.disableDays[weekDay] || stub + String(dt < 10 ? "0" + dt : dt) in disabledDates || (o.startDate && o.startDate > new Date(tdy, tdm, dt))) {
                                                         cName.push("day-disabled");
                                                 } else if(o.highlightDays[weekDay]) {
                                                         cName.push("date-picker-highlight");
@@ -1328,6 +1327,7 @@ datePickerController = function() {
                 var regExp8 = /no-locale/g;                             // do not attempt to detect the browser language
                 var regExp9 = /no-fade/g;                               // always show the datepicker
                 var regExp10 = /hide-input/g;                           // hide the input
+                var regExp11 = /start-date-(\d\d\d\d-\d\d-\d\d)/g;
                 
                 for(var i=0, inp; inp = inputs[i]; i++) {
                         if(inp.className && (inp.className.search(regExp6) != -1 || inp.className.search(/split-date/) != -1) && ((inp.tagName.toLowerCase() == "input" && (inp.type == "text" || inp.type == "hidden")) || inp.tagName.toLowerCase() == "select")) {
@@ -1348,7 +1348,8 @@ datePickerController = function() {
                                         splitDate:0,
                                         noTransparency:inp.className.search(regExp2) != -1,
                                         staticPos:inp.className.search(regExp9) != -1,
-                                        hideInput:inp.className.search(regExp10) != -1
+                                        hideInput:inp.className.search(regExp10) != -1,
+                                        startDate: inp.className.search(regExp11) != -1
                                 };
 
                                 if(!options.staticPos) {
@@ -1419,6 +1420,12 @@ datePickerController = function() {
                                         options.low  = options.low  ? range[0] + String(options.low).substr(4,4)  : datePickerController.dateFormat(range[0] + "/01/01");
                                         options.high = options.high ? range[1] + String(options.low).substr(4,4)  : datePickerController.dateFormat(range[1] + "/12/31");
                                 };
+
+                                // Start date
+                                if (inp.className.search(regExp11) != -1) {
+                                  var start_date = inp.className.match(regExp11)[0].split('-');
+                                  options.startDate = new Date(start_date[2], start_date[3], start_date[4]);
+                                }
 
                                 addDatePicker(inp.id, options);
                         };
