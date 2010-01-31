@@ -357,6 +357,7 @@ module ActionView # :nodoc: all
         options = merge_defaults_for_text_picker(options)
         html_options[:class] = get_html_classes_for_datepicker(options, html_options[:class])
         html_options[:value] = format_date_value_for_text_field(value(object), options[:format], options[:divider])
+        html_options[:onclick] = "var dp = datePickerController.getDatePicker('#{add_default_name_and_id(html_options)}'); dp.show(); return false;" if options[:disable_text_edition]
         to_input_field_tag('text', html_options)
       end
 
