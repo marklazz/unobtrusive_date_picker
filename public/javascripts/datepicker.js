@@ -1424,7 +1424,7 @@ datePickerController = function() {
                                 // Start date
                                 if (inp.className.search(regExp11) != -1) {
                                   var start_date = inp.className.match(regExp11)[0].split('-');
-                                  options.startDate = new Date(start_date[2], start_date[3], start_date[4]);
+                                  options.startDate = new Date(start_date[2], parseInt(start_date[3]) - 1, start_date[4]);
                                 }
 
                                 addDatePicker(inp.id, options);
