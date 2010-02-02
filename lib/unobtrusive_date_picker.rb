@@ -6,13 +6,13 @@ module UnobtrusiveDatePicker
                                           :month => {:id => 'mm', :name => 'month'},
                                           :day   => {:id => 'dd', :name => 'day'} }
 
-  DATEPICKER_DAYS_OF_WEEK = { :Monday     => '0',
-                              :Tuesday    => '1',
-                              :Wednesday  => '2',
-                              :Thursday   => '3',
-                              :Friday     => '4',
-                              :Saturday   => '5',
-                              :Sunday     => '6'}
+  DATEPICKER_DAYS_OF_WEEK = { :Monday     => '1',
+                              :Tuesday    => '2',
+                              :Wednesday  => '3',
+                              :Thursday   => '4',
+                              :Friday     => '5',
+                              :Saturday   => '6',
+                              :Sunday     => '0'}
   
   DATEPICKER_DIVIDERS = { 'slash' => '/',
                           'dash'  => '-',
