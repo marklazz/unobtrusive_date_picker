@@ -12,7 +12,7 @@ module UnobtrusiveDatePicker
                               :Thursday   => '4',
                               :Friday     => '5',
                               :Saturday   => '6',
-                              :Sunday     => '0'}
+                              :Sunday     => '7'}
   
   DATEPICKER_DIVIDERS = { 'slash' => '/',
                           'dash'  => '-',
