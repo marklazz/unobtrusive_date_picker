@@ -1040,6 +1040,7 @@ function datePicker(options) {
 
                                                 cName = [];
                                                 weekDay = ( tmpDate.getDay() + 6 ) % 7;
+												cellDate = new Date(tdy, tdm, dt);
 
                                                 if(dt == todayD && tdm == todayM && tdy == todayY) {
                                                         cName.push("date-picker-today");
@@ -1048,7 +1049,7 @@ function datePicker(options) {
                                                 if(o.dateSet != null && o.dateSet.getDate() == dt && o.dateSet.getMonth() == tdm && o.dateSet.getFullYear() == tdy) {
                                                         cName.push("date-picker-selected-date");
                                                 };
-                                                if(o.disableDays[weekDay] || stub + String(dt < 10 ? "0" + dt : dt) in disabledDates || (o.startDate && o.startDate > new Date(tdy, tdm, dt))) {
+                                                if(o.disableDays[weekDay] || stub + String(dt < 10 ? "0" + dt : dt) in disabledDates || (o.startDate && o.startDate > cellDate) || (o.endDate && o.endDate < cellDate) ) {
                                                         cName.push("day-disabled");
                                                 } else if(o.highlightDays[weekDay]) {
                                                         cName.push("date-picker-highlight");
@@ -1328,6 +1329,7 @@ datePickerController = function() {
                 var regExp9 = /no-fade/g;                               // always show the datepicker
                 var regExp10 = /hide-input/g;                           // hide the input
                 var regExp11 = /start-date-(\d\d\d\d-\d\d-\d\d)/g;
+                var regExp12 = /end-date-(\d\d\d\d-\d\d-\d\d)/g;
                 
                 for(var i=0, inp; inp = inputs[i]; i++) {
                         if(inp.className && (inp.className.search(regExp6) != -1 || inp.className.search(/split-date/) != -1) && ((inp.tagName.toLowerCase() == "input" && (inp.type == "text" || inp.type == "hidden")) || inp.tagName.toLowerCase() == "select")) {
@@ -1425,6 +1427,12 @@ datePickerController = function() {
                                 if (inp.className.search(regExp11) != -1) {
                                   var start_date = inp.className.match(regExp11)[0].split('-');
                                   options.startDate = new Date(start_date[2], parseInt(start_date[3]) - 1, start_date[4]);
+                                }
+
+                                // End date
+                                if (inp.className.search(regExp12) != -1) {
+                                  var end_date = inp.className.match(regExp12)[0].split('-');
+                                  options.endDate = new Date(end_date[2], parseInt(end_date[3]) - 1, end_date[4]);
                                 }
 
                                 addDatePicker(inp.id, options);

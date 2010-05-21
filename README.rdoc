@@ -51,6 +51,7 @@ Options (* indicates same functionality as is in Rails Date helpers):
    - *:use_month_numbers => use month numbers instead of names for option text
    - *:add_month_numbers => add month numbers to names for option text ("1 - January")
    - (NEW) :start_date => disables all prior dates to the received parameter
+   - (NEW) :end_date => disables all dates after the one received as parameter
    - (NEW) :disable_text_edition => disables text edition from unobtrusive_date_text_picker helper (if set to true). When clicking on the input text, the graphical interface is displayed
    - (NEW) :size => Enables to change the size of the unobtrusive_date_text_picker
    - :highlight_days => which days of the week should be highlighted in the datepicker (by default Saturday and Sunday)

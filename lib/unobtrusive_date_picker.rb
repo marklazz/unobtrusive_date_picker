@@ -146,8 +146,13 @@ module UnobtrusiveDatePicker
       end
 
       if options[:start_date]
-        date_string = "#{options[:start_date].year}-#{two_digits_number(options[:start_date].month)}-#{two_digits_number(options[:start_date].day)}"
-        html_classes << "start-date-#{date_string}"
+        start_date_string = "#{options[:start_date].year}-#{two_digits_number(options[:start_date].month)}-#{two_digits_number(options[:start_date].day)}"
+        html_classes << "start-date-#{start_date_string}"
+      end
+
+      if options[:end_date]
+        end_date_string = "#{options[:end_date].year}-#{two_digits_number(options[:end_date].month)}-#{two_digits_number(options[:end_date].day)}"
+        html_classes << "end-date-#{end_date_string}"
       end
 
       if options[:no_transparency]
