@@ -1320,9 +1320,10 @@ datePickerController = function() {
                 };
                 return range;
         };
-        var create = function(inp) {
+        var create = function(ainp) {
                 if(!(typeof document.createElement != "undefined" && typeof document.documentElement != "undefined" && typeof document.documentElement.offsetWidth == "number")) return;
-
+                
+                var inp = typeof(ainp) == 'string' ? document.getElementById(ainp) : ainp;
                 var inputs  = (inp && inp.tagName) ? [inp] : joinNodeLists(document.getElementsByTagName('input'), document.getElementsByTagName('select'));
                 var regExp1 = /disable-days-([1-7]){1,6}/g;             // the days to disable
                 var regExp2 = /no-transparency/g;                       // do not use transparency effects
