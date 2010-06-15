@@ -406,6 +406,11 @@ module ActionView::Helpers::PrototypeHelper
       def unobtrusive_date_picker_clear
         call "datePickerController.clear"
       end
+
+      def unobtrusive_date_picker_refresh
+        unobtrusive_date_picker_clear
+        unobtrusive_date_picker_create
+      end
     end
   end
 end
