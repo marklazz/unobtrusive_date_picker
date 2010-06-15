@@ -391,7 +391,9 @@ module ActionView::Helpers::PrototypeHelper
     module GeneratorMethods
       def unobtrusive_date_picker_create(id = nil)
         if id
-          call "datePickerController.create", "$('#{id}')"
+          call "datePickerController.getDatePicker('#{id}').destroy();"
+          call "delete datePickerController.datePickers['#{id}'];"
+          call "datePickerController.create", id
         else
           record "datePickerController.create"
         end
