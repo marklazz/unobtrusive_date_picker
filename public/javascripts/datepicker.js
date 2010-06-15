@@ -1195,6 +1195,12 @@ function datePicker(options) {
                 };
                 
                 o.titleBar = o.table = o.div = null;
+
+                // Destroy elements created
+                var fdiv = document.getElementById('fd-'+o.id);
+                if (fdiv && fdiv.parentNode) {
+                  fdiv.parentNode.removeChild(fdiv);
+                }
                 o = null;
         };
         o.create();
