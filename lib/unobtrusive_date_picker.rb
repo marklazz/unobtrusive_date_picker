@@ -395,12 +395,12 @@ module ActionView::Helpers::PrototypeHelper
           call "delete datePickerController.datePickers['#{id}'];"
           call "datePickerController.create", id
         else
-          record "datePickerController.create"
+          call "datePickerController.create"
         end
       end
       
       def unobtrusive_date_picker_cleanup(id = nil)
-        record "datePickerController.cleanUp"
+        call "datePickerController.cleanUp"
       end
     end
   end
