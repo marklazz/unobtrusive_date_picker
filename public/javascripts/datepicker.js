@@ -891,6 +891,15 @@ function datePicker(options) {
                         } else if(document.createEventObject) {
                                 elem.fireEvent('onchange');
                         };
+                        // Fire event from prototype (if present)
+                        if (typeof($) == 'function') {
+                          $(o.getElem().id).fire('datepicker:changed');
+                        }
+                        // Use it like this:
+                        // document.observe("datepicker:changed", function(event) {
+                        //  console.log("Element with ID (" + event.target.id +
+                        //   ") frobbed widget #" + event.memo.widgetNumber + ".");
+                        //  });
                 };
         };
         o.disableTodayButton = function() {
