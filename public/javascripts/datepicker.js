@@ -1237,6 +1237,15 @@ datePickerController = function() {
                         if(document.getElementById(datePickers[dp].id))  { datePickers[dp].hide(); };
                 };
         };
+        var clear = function() {
+            var dp;
+            for(dp in datePickers) {
+                if(!datePickers[dp].created) continue;
+                datePickers[dp].destroy();
+                datePickers[dp] = null;
+                delete datePickers[dp];
+            };
+        };
         var cleanUp = function() {
                 var dp;
                 for(dp in datePickers) {
@@ -1451,6 +1460,7 @@ datePickerController = function() {
                 addEvent:addEvent,
                 removeEvent:removeEvent,
                 create:create,
+                clear: clear,
                 destroy:destroy,
                 cleanUp:cleanUp,
                 addDatePicker:addDatePicker,

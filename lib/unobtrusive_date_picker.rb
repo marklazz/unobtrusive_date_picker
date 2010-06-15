@@ -402,6 +402,10 @@ module ActionView::Helpers::PrototypeHelper
       def unobtrusive_date_picker_cleanup(id = nil)
         call "datePickerController.cleanUp"
       end
+
+      def unobtrusive_date_picker_clear
+        call "datePickerController.clear"
+      end
     end
   end
 end
