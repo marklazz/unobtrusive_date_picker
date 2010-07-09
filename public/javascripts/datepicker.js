@@ -64,6 +64,11 @@ datePicker.getDaysPerMonth = function(nMonth, nYear) {
         return (((0 == (nYear%4)) && ((0 != (nYear%100)) || (0 == (nYear%400)))) && nMonth == 1) ? 29: [31,28,31,30,31,30,31,31,30,31,30,31][nMonth];
 };
 
+function trimNumber(s) {
+  while (s.substr(0,1) == '0' && s.length>1) { s = s.substr(1,9999); }
+  return s;
+}
+
 function datePicker(options) {
 
         this.defaults          = {};
@@ -1451,13 +1456,13 @@ datePickerController = function() {
                                 // Start date
                                 if (inp.className.search(regExp11) != -1) {
                                   var start_date = inp.className.match(regExp11)[0].split('-');
-                                  options.startDate = new Date(start_date[2], parseInt(start_date[3]) - 1, start_date[4]);
+                                  options.startDate = new Date(new Date().setFullYear(parseInt(trimNumber(start_date[2])), parseInt(trimNumber(start_date[3])) - 1, parseInt(trimNumber(start_date[4]))));
                                 }
 
                                 // End date
                                 if (inp.className.search(regExp12) != -1) {
                                   var end_date = inp.className.match(regExp12)[0].split('-');
-                                  options.endDate = new Date(end_date[2], parseInt(end_date[3]) - 1, end_date[4]);
+                                  options.endDate = new Date(new Date().setFullYear(parseInt(trimNumber(end_date[2])), parseInt(trimNumber(end_date[3])) - 1, parseInt(trimNumber(end_date[4]))));
                                 }
 
                                 addDatePicker(inp.id, options);
