@@ -7,10 +7,6 @@ to add a clickable calendar image that will bring up a calendar picker if
 javascript is available. It replicates as much of the API of the Rails
 `date_select`, and `datetime_select` form helpers.
 
-It also uses the 12 Hour Time plugin
-(http://code.google.com/p/rails-twelve-hour-time-plugin/) so that 12 Hour times
-can be processed by Active Record.
-
 You may want to consider compressing the javascript files with Dean Edward's
 Packer (http://dean.edwards.name/packer/) or Douglas Crockford's JSMin
 (http://www.crockford.com/javascript/jsmin.html) before deploying your
@@ -149,10 +145,6 @@ release and I update the plugin with them.
                <option value="00">00</option>
                ...
                <option value="59">59</option>
-            </select>
-            <select id="article_date_6i" name="article[date(6i)][ampm]">
-               <option value="AMPM>AMPM</option>
-               <option value="AMPM>AMPM</option>
             </select>
          </label><br />
             
