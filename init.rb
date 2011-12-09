@@ -1,3 +1,7 @@
+# This commented out because it raises a 'Stack level too deep' Exception
+# when some Rails helpers are being used (like select_datetime or select_time).
+# Also this file is only concerned with am/pm functionality which is going to be natively
+# included in Rails 3.1.
 #require '12_hour_time'
 require 'unobtrusive_date_picker'
 
